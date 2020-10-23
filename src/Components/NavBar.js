@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { userProfileContext } from "../App";
 
 function NavBar() {
-    const user = useContext(userProfileContext)
+    const { user } = useContext(userProfileContext)
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
             <Link to="/" className="navbar-brand">Jigao</Link>
@@ -17,15 +17,14 @@ function NavBar() {
                         <Link to="/" className="nav-link">Home</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Features</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">Pricing</a>
+                        <Link to="/ask" className="nav-link">Ask</Link>
                     </li>
                 </ul>
                 <ul className="navbar-nav float-right">
                     <li className="nav-item active">
-                        {user ? <Link to="/" className="nav-link">{user.displayName}</Link> : <Link to="/login" className="nav-link">Login</Link>}
+                        {user ? <Link to={{
+                            pathname: `/profile/${user.displayName}`,
+                        }} className="nav-link">{user.displayName}</Link> : <Link to="/login" className="nav-link">Login</Link>}
                     </li>
                 </ul>
                 <form className="form-inline">
@@ -34,7 +33,7 @@ function NavBar() {
                 </form>
             </div>
             <br />
-        </nav>
+        </nav >
     )
 }
 

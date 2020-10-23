@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './bootstrap-4.5.3-dist/css/bootstrap.min.css';
+import './App.css'
 import firebase from "./Components/Firebase/Config";
 import { useAuthState } from "react-firebase-hooks/auth"
 import AskQuestion from './Components/Question/AskQuestion';
@@ -10,6 +11,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import DisplayQuestion from './Components/Question/DisplayQuestion';
 import Error from './Components/Error';
 import Login from './Components/User/Login';
+import Profile from './Components/User/Profile';
 
 export const userProfileContext = React.createContext()
 
@@ -17,8 +19,22 @@ const auth = firebase.auth();
 
 function App() {
   const [user] = useAuthState(auth)
+  const [questions, setQuestions] = useState(
+    []
+  )
+
+  useEffect(() => {
+    firebase.database().ref().child("questions").on("value", snapshot => {
+      if (snapshot.val() != null) {
+        console.log("Firebase Render")
+        setQuestions(Object.values(snapshot.val()))
+      }
+    })
+  }, [])
+
+
   return (
-    <userProfileContext.Provider value={user}>
+    <userProfileContext.Provider value={{ user: user, questions: questions }}>
       <Provider store={QuestionStore}>
         <NavBar />
         <div className="container">
@@ -26,6 +42,9 @@ function App() {
             <Route path="/" exact component={DisplayQuestion} />
             <Route path="/ask">
               {user ? <AskQuestion /> : <Redirect to="/login" />}
+            </Route>
+            <Route path="/profile/:user">
+              {user ? <Profile /> : <Redirect to="/login" />}
             </Route>
             <Route path="/login">
               {user ? <Redirect to="/" /> : <Login />}

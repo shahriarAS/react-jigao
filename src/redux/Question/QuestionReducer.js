@@ -1,5 +1,3 @@
-import firebase from "../../Components/Firebase/Config"
-
 const initialState = {
     questions: [
         // { id: Date.now(), user: "Shahriar", title: "What is my ip?", categories: "internet", question: "I want to know my ip.", answers: [], upvoat: 0, downvoat: 0 }

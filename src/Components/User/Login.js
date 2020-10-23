@@ -15,8 +15,8 @@ function Login() {
     }
 
     return (
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
+        <div className="jumbotron jumbotron-fluid">
+            <div className="container">
                 <button className="btn btn-primary btn-lg btn-block" onClick={signInWithGoogle} type='submit'>Login With Google</button>
             </div>
         </div>
