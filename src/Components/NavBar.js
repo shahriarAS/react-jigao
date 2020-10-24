@@ -28,7 +28,7 @@ function NavBar() {
                         <Link to="/ask" className="nav-link">Ask</Link>
                     </li>
                 </ul>
-                <ul className="navbar-nav float-right">
+                <ul className="navbar-nav">
                     <li className="nav-item active">
                         {user ? <Link to={{
                             pathname: `/profile/${user.displayName}`,
