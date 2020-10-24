@@ -12,6 +12,7 @@ import DisplayQuestion from './Components/Question/DisplayQuestion';
 import Error from './Components/Error';
 import Login from './Components/User/Login';
 import Profile from './Components/User/Profile';
+import SingleQuestion from './Components/Question/SingleQuestion';
 
 export const userProfileContext = React.createContext()
 
@@ -20,21 +21,21 @@ const auth = firebase.auth();
 function App() {
   const [user] = useAuthState(auth)
   const [questions, setQuestions] = useState(
-    []
+    {}
   )
 
   useEffect(() => {
     firebase.database().ref().child("questions").on("value", snapshot => {
       if (snapshot.val() != null) {
         console.log("Firebase Render")
-        setQuestions(Object.values(snapshot.val()))
+        setQuestions(snapshot.val())
       }
     })
   }, [])
 
 
   return (
-    <userProfileContext.Provider value={{ user: user, questions: questions }}>
+    <userProfileContext.Provider value={{ user: user, questions: Object.values(questions), questionsObj: questions }}>
       <Provider store={QuestionStore}>
         <NavBar />
         <div className="container">
@@ -49,6 +50,7 @@ function App() {
             <Route path="/login">
               {user ? <Redirect to="/" /> : <Login />}
             </Route>
+            <Route path="/question/:id/:title" render={(props) => <SingleQuestion {...props}/>}/>
             <Route component={Error} />
           </Switch>
         </div>

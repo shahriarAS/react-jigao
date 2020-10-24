@@ -1,9 +1,17 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import firebase from "../Components/Firebase/Config"
 import { userProfileContext } from "../App";
 
 function NavBar() {
     const { user } = useContext(userProfileContext)
+    function SignOut() {
+        firebase.auth().signOut().then(function () {
+           alert("Sign Out Success")
+        }).catch(function (error) {
+            // An error happened.
+        });
+    }
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
             <Link to="/" className="navbar-brand">Jigao</Link>
@@ -25,6 +33,9 @@ function NavBar() {
                         {user ? <Link to={{
                             pathname: `/profile/${user.displayName}`,
                         }} className="nav-link">{user.displayName}</Link> : <Link to="/login" className="nav-link">Login</Link>}
+                    </li>
+                    <li className="nav-item active">
+                        {user ? <a style={{cursor: "pointer"}} className="nav-link" onClick={SignOut}>Log Out</a> : ""}
                     </li>
                 </ul>
                 <form className="form-inline">
