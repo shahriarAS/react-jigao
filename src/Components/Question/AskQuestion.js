@@ -6,7 +6,7 @@ import firebase from "../Firebase/Config"
 
 function AskQuestion() {
     const { user, questions } = useContext(userProfileContext)
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, reset } = useForm()
     const dispatch = useDispatch(
     )
     function SubmitQuestion(data) {
@@ -15,6 +15,7 @@ function AskQuestion() {
         data.downvoat = 0
         data.upvoat = 0
         firebase.database().ref().child("questions").push(data)
+        reset()
         dispatch(
             {
                 type: "ASK",

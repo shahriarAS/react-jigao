@@ -7,7 +7,7 @@ function NavBar() {
     const { user } = useContext(userProfileContext)
     function SignOut() {
         firebase.auth().signOut().then(function () {
-           alert("Sign Out Success")
+            alert("Sign Out Success")
         }).catch(function (error) {
             // An error happened.
         });
@@ -35,7 +35,7 @@ function NavBar() {
                         }} className="nav-link">{user.displayName}</Link> : <Link to="/login" className="nav-link">Login</Link>}
                     </li>
                     <li className="nav-item active">
-                        {user ? <a style={{cursor: "pointer"}} className="nav-link" onClick={SignOut}>Log Out</a> : ""}
+                        {user ? <a style={{ cursor: "pointer" }} className="nav-link" onClick={SignOut}>Log Out</a> : ""}
                     </li>
                 </ul>
                 <form className="form-inline">

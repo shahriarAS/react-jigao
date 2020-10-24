@@ -6,7 +6,7 @@ import firebase from "../Firebase/Config"
 function AnswerForm(props) {
     const { question } = props
     const { user, questionsObj } = useContext(userProfileContext)
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, reset } = useForm()
 
     function SubmitAnswer(data) {
         const questionKey = Object.keys(questionsObj).filter(i => questionsObj[i].id === question.id)
@@ -16,6 +16,7 @@ function AnswerForm(props) {
         data.upvoat = 0
         data.downvoat = 0
         firebase.database().ref().child(`questions/${questionKey}/answers`).push(data)
+        reset()
     }
     return (
         <form onSubmit={handleSubmit(SubmitAnswer)}>
