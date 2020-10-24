@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './bootstrap-4.5.3-dist/css/bootstrap.min.css';
+// import './bootstrap-4.5.3-dist/css/bootstrap.min.css';
 import './App.css'
 import firebase from "./Components/Firebase/Config";
 import { useAuthState } from "react-firebase-hooks/auth"
