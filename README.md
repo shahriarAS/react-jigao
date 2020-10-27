@@ -1,3 +1,32 @@
+Hey,
+This is Shahriar Ahmed Shovon and <b>React Jigao</b> is a platform for question and answer. You can think this as Quora or Stackoverflow with less features. You can do here
+<ol>
+  <li>Ask Question</li>
+  <li>Get Answer</li>
+  <li>Up/Down voat a question or answer</li>
+  <li>Log in with your google account instantly</li>
+</ol>
+
+But there are some problem or bug with my code
+<ol>
+  <li>As much you want you can Up or Down vote a question or answer.. [ This doesn't make any sense ]</li>
+  <li>The Questions and other items come slowly from firebase real time database.</li>
+</ol>
+
+## Technology I used
+
+<ol>
+  <li>React 16.13.x</li>
+  <li>Firebase</li>
+  <li>React Router</li>
+  <li>React Redux ( Though I could done with context )</li>
+  <li>React Bootstrap</li>
+</ol>
+
+## Conslusion
+
+Actually I could make this project more feature enabled and beautiful but I was just experimenting with some react feature. When I got succeed on the experiment then I just pushed it on github and never cared for this. And also my code is so ugly to read. There are no comment and standard rules to follow. I apologize for that, and thanks a lot for visiting my code.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
