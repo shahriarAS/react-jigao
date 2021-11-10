@@ -1,6 +1,6 @@
 Hey,
 This is Shahriar Ahmed Shovon and <b>React Jigao</b> is a platform for question and answer. You can think this as Quora or Stackoverflow with less features. You can do here
-<ol>
+<ol> 
   <li>Ask Question</li>
   <li>Get Answer</li>
   <li>Up/Down voat a question or answer</li>
